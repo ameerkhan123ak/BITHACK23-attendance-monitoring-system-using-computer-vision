@@ -152,7 +152,30 @@
                                 </div>
                             </div>
                             <div class="profile-details-activity-container">
-
+                                <h3 id="tdyact">Today Activity</h3>
+                                <div class="profile-details-activity-bar-container">
+                                    <div class="activity-bar">
+                                        <div class="circle-bar bar-1"></div>
+                                        <div class="line line-1"></div>
+                                        <div class="circle-bar bar-1"></div>
+                                        <div class="line line-1"></div>
+                                        <div class="circle-bar bar-1"></div>
+                                        <div class="line line-1"></div>
+                                        <div class="circle-bar bar-1"></div>
+                                        <div class="line line-1"></div>
+                                        <div class="circle-bar bar-1"></div>
+                                        <div class="line line-1"></div>
+                                        <div class="circle-bar bar-1"></div>
+                                    </div>
+                                    <div class="period-bar">
+                                        <h3>check in</h3>
+                                        <h3>class I</h3>
+                                        <h3>class II</h3>
+                                        <h3>class III</h3>
+                                        <h3>class IV</h3>
+                                        <h3>class V</h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -653,6 +676,47 @@
         {
             font-family: 'Poppins', sans-serif;
         }
+        .profile-details-activity-container 
+        {
+            padding:10px;
+        }
+        .profile-details-activity-bar-container 
+        {
+            display: flex;
+            height: 100%;
+            column-gap: 50px;
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+        .activity-bar 
+        {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .circle-bar 
+        {
+            height: 40px;
+            width: 40px;
+            background-color: #38A8AF;
+            border-radius: 50%;
+        }
+        .line 
+        {
+            height: 35px;
+            width: 5px;
+            background-color: #38A8AF;
+        }
+        .period-bar 
+        {
+            display: flex;
+            flex-direction: column;
+            row-gap: 47px;
+        }
+        #tdyact 
+        {
+            padding-left: 10px;
+        }
     </style>
     <script>
         console.clear();
@@ -818,6 +882,7 @@
 
         drawChart();
 
+        
         
     </script>
 </body>
