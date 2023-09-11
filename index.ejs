@@ -154,18 +154,18 @@
                             <div class="profile-details-activity-container">
                                 <h3 id="tdyact">Today Activity</h3>
                                 <div class="profile-details-activity-bar-container">
-                                    <div class="activity-bar">
-                                        <div class="circle-bar bar-1"></div>
-                                        <div class="line line-1"></div>
-                                        <div class="circle-bar bar-1"></div>
-                                        <div class="line line-1"></div>
-                                        <div class="circle-bar bar-1"></div>
-                                        <div class="line line-1"></div>
-                                        <div class="circle-bar bar-1"></div>
-                                        <div class="line line-1"></div>
-                                        <div class="circle-bar bar-1"></div>
-                                        <div class="line line-1"></div>
-                                        <div class="circle-bar bar-1"></div>
+                                    <div class="activity-bar" id="student-activity-bar">
+                                        <div class="circle-bar" data-value="08:45"></div>
+                                        <div class="line line-1" data-value="08:45"></div>
+                                        <div class="circle-bar" data-value="09:45"></div>
+                                        <div class="line line-1" data-value="09:45"></div>
+                                        <div class="circle-bar bar-1" data-value="11:00"></div>
+                                        <div class="line line-1" data-value="11:00"></div>
+                                        <div class="circle-bar bar-1" data-value="12:15"></div>
+                                        <div class="line line-1" data-value="12:15"></div>
+                                        <div class="circle-bar bar-1" data-value="13:30"></div>
+                                        <div class="line line-1" data-value="13:30"></div>
+                                        <div class="circle-bar bar-1" data-value="14:45"></div>
                                     </div>
                                     <div class="period-bar">
                                         <h3>check in</h3>
@@ -826,7 +826,6 @@
                 }
                 else if(batchValue !== batchFilter.value) {
                     console.log('data deleted')
-                    console.log(studentCard)
                     studentCard.style.display = 'none';
                 }
                 else {
@@ -883,7 +882,30 @@
         drawChart();
 
         
+        //Activity Bar
+
+        const ActivityBarMain = document.querySelectorAll('.activity-bar')
+        ActivityBarMain.forEach(activityBar => {
+            const barsCollection = activityBar.getElementsByTagName('div');
+            const bars = Array.from(barsCollection)
+            bars.forEach(bar => {
+                const periodTime = bar.getAttribute('data-value');
+                const currentTime = getCurrentTime();
+                if(currentTime > periodTime) {
+                    bar.style.backgroundColor = 'red';
+                }
+            })
+        })
+
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2,'0');
+            const minutes = now.getMinutes().toString().padStart(2,'0');
+            return `${hours}:${minutes}`
+        }
+        const getTime = getCurrentTime();
         
+
     </script>
 </body>
 </html>
