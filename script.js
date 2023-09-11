@@ -47,5 +47,5 @@ search.oninput = () => {
         const name = studentCard.querySelector('[data-student-name]');
         const rollnumber = studentCard.querySelector('[student-roll-number]');
         console.log(name + ' ' + rollnumber);
-    })
-}
+    });
+};
