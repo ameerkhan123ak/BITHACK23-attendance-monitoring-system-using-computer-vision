@@ -27,6 +27,9 @@ app.post('/',function(req, res){
     let email = req.body.email;
     let degreelevel = req.body.degreelevel;
 
+    console.log(batch)
+    console.log('rere')
+
     if(name === "" || rollnumber==='' || designation==='' || department==='N/A' ||
      gender === 'N/A' || batch === 'N/A' || studentclass === '' || studentID === '' 
      || dob === '' || email === '' || degreelevel === 'N/A') return;

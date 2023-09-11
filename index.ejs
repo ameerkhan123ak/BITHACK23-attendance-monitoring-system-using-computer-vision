@@ -755,17 +755,19 @@
         const batchFilter = document.getElementById('batch-filter');
         batchFilter.addEventListener('change', ()=> {
             studentCards.forEach(studentCard => {
-                const batch = studentCard.getElementsByTagName('p')[3];
-                const batchValue = batch.innerHTML.trim();
-                if(batchFilter.value === 'select') 
-                {
+                const batchValue = studentCard.getElementsByTagName('p')[3].innerHTML.trim();
+
+                if(batchFilter.value === 'select') {
                     studentCard.style.display = 'flex';
                 }
-                else if(batchValue !=  batchFilter.value)
-                {
+                else if(batchValue !== batchFilter.value) {
+                    console.log('data deleted')
+                    console.log(studentCard)
                     studentCard.style.display = 'none';
                 }
-                console.log(batchValue + ' ' + batchFilter.value)
+                else {
+                    studentCard.style.display = 'flex';
+                }
             })
         })
         // chart js 
