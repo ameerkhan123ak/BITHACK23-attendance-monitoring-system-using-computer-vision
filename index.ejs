@@ -148,7 +148,6 @@
                                 </div>
                                 <div class="profile-details-flex-lower">
                                     <h3>Attendance Progress</h3>
-                                    <canvas id="attendanceChart" width="700" height="200"></canvas>
                                 </div>
                             </div>
                             <div class="profile-details-activity-container">
@@ -833,53 +832,23 @@
                 }
             })
         })
-        // chart js 
-        const canvas = document.getElementById('attendanceChart');
-        const ctx = canvas.getContext('2d');
+        // chart js  
 
-        const monthsData = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-        const attendanceData = [50, 60, 70, 80, 90, 85, 95, 100, 90, 80, 70, 60]; 
-        const maxAttendance = Math.max(...attendanceData); 
-
-        const chartWidth = canvas.width - 40; 
-        const barWidth = 20; 
-        const barSpacing = 30; 
-        const borderRadius = 10; 
-
-        function drawChart() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            ctx.beginPath();
-            ctx.moveTo(20, 10);
-            ctx.lineTo(20, canvas.height - 20);
-            ctx.lineTo(canvas.width - 10, canvas.height - 20);
-            ctx.stroke();
-
-            for (let i = 0; i < attendanceData.length; i++) {
-                const barHeight = (attendanceData[i] / maxAttendance) * (canvas.height - 30);
-                const x = 30 + i * (barWidth + barSpacing);
-                const y = canvas.height - 20 - barHeight;
-                
-                ctx.fillStyle = 'blue'; 
-                ctx.beginPath();
-                ctx.moveTo(x + borderRadius, y);
-                ctx.lineTo(x + barWidth - borderRadius, y);
-                ctx.quadraticCurveTo(x + barWidth, y, x + barWidth, y + borderRadius);
-                ctx.lineTo(x + barWidth, y + barHeight - borderRadius);
-                ctx.quadraticCurveTo(x + barWidth, y + barHeight, x + barWidth - borderRadius, y + barHeight);
-                ctx.lineTo(x + borderRadius, y + barHeight);
-                ctx.quadraticCurveTo(x, y + barHeight, x, y + barHeight - borderRadius);
-                ctx.lineTo(x, y + borderRadius);
-                ctx.quadraticCurveTo(x, y, x + borderRadius, y);
-                ctx.closePath();
-                ctx.fill();
-                
-                ctx.fillStyle = 'black';
-                ctx.fillText(monthsData[i], x, canvas.height - 5);
-            }
+        function developChart() {
+            const chart = document.createElement('canvas');
+            chart.setAttribute('id','attendanceChart');
+            chart.setAttribute('height',200);
+            chart.setAttribute('width',700);
+            // chart.style.border = '2px solid red'
+            return chart;
         }
 
-        drawChart();
+        const AttendanceChartContainer = document.querySelectorAll('.profile-details-flex-lower');
+        AttendanceChartContainer.forEach(AttendanceChart => {
+            const chart = developChart();
+            console.log(chart)
+            AttendanceChart.appendChild(chart)
+        })
 
         
         //Activity Bar
